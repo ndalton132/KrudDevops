@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <!-- Link to our CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main container for the entire app -->
+    <div class="container">
+        
+        <!-- Header section -->
+        <header>
+            <h1>📝 My Todo App</h1>
+            <p class="subtitle">Powered by Node.js + PostgreSQL</p>
+        </header>
+
+        <!-- Form to add new todos -->
+        <div class="add-todo-section">
+            <input 
+                type="text" 
+                id="todoInput" 
+                placeholder="What needs to be done?"
+                class="todo-input"
+            >
+            <button id="addBtn" class="btn btn-primary">Add Todo</button>
+        </div>
+
+        <!-- Stats section (shows counts) -->
+        <div class="stats">
+            <span id="totalCount">Total: 0</span>
+            <span id="completedCount">Completed: 0</span>
+        </div>
+
+        <!-- Loading indicator (hidden by default) -->
+        <div id="loading" class="loading hidden">Loading todos...</div>
+
+        <!-- Error message (hidden by default) -->
+        <div id="error" class="error hidden"></div>
+
+        <!-- The list of todos will appear here -->
+        <div id="todoList" class="todo-list">
+            <!-- Todos will be dynamically added here by JavaScript -->
+        </div>
+
+    </div>
+
+    <!-- Link to our JavaScript file (at the end so HTML loads first) -->
+    <script src="app.js"></script>
+</body>
+</html>
