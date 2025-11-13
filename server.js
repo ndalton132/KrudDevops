@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());  // ← ADD THIS LINE (before app.use(express.json()))
 app.use(express.json());;
+app.use(express.static('FrontEnd'));
 
 // PostgreSQL connection pool
 const pool = new Pool({
@@ -241,7 +242,6 @@ process.on('SIGINT', async () => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
   console.log('\nAvailable endpoints:');
   console.log('GET    /api/todos      - Get all todos');
   console.log('GET    /api/todos/:id  - Get single todo');

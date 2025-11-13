@@ -1,5 +1,5 @@
 // API base URL - your backend server
-const API_URL = 'http://localhost:3000/api/todos';
+const API_URL = '/api/todos';
 
 // Get references to HTML elements
 const todoInput = document.getElementById('todoInput');
@@ -27,6 +27,7 @@ function setupEventListeners() {
     // Add todo when Enter key is pressed
     todoInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
+            e.preventDefault();
             addTodo();
         }
     });
