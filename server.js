@@ -13,11 +13,12 @@ app.use(express.static('FrontEnd'));
 
 // PostgreSQL connection pool
 const pool = new Pool({
-  user: process.env.DB_USER || 'postgres',
-  host: process.env.DB_HOST || 'localhost',
-  database: process.env.DB_NAME || 'crudKubDB',
-  password: process.env.DB_PASSWORD ? String(process.env.DB_PASSWORD).trim() : 'your_password',
-  port: parseInt(process.env.DB_PORT) || 5432,
+  user: process.env.PGUSER || 'postgres',
+  host: process.env.PGHOST || 'localhost',
+  database: process.env.PGDATABASE || 'crudKubDB',
+  password: process.env.PGPASSWORD ? String(process.env.PGPASSWORD).trim() : 'your_password',
+  port: parseInt(process.env.PGPORT) || 5432,
+  ssl: { rejectUnauthorized: false }  // Don't forget SSL!
 });
 
 // Test database connection

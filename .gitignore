@@ -3,3 +3,43 @@
 logs.txt
 README.Docker.md
 .dockerignore
+
+
+# Terraform files
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+tfplan
+*.tfvars
+!terraform.tfvars.example
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CLI configuration files
+.terraformrc
+terraform.rc
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets
+*.pem
+*.key
+secrets/
