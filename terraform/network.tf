@@ -10,6 +10,7 @@ resource "azurerm_subnet" "aks" {
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
   address_prefixes     = ["10.0.1.0/24"]
+  service_endpoints = ["Microsoft.Sql"]
 }
 
 
@@ -18,6 +19,9 @@ resource "azurerm_subnet" "postgresql" {
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
   address_prefixes     = ["10.0.2.0/24"]
+  service_endpoints = ["Microsoft.Sql"]
+  
+  
   
   delegation {
     name = "fs"
@@ -29,4 +33,21 @@ resource "azurerm_subnet" "postgresql" {
     }
   }
 }
+
+
+#Private endpoint configs
+
+resource "azurerm_private_dns_zone" "postgres" {
+  name                = "privatelink.postgres.database.azure.com"
+  resource_group_name = azurerm_resource_group.main.name
+}
+
+resource "azurerm_private_dns_zone_virtual_network_link" "postgres" {
+  name                  = "postgres-dns-link"
+  resource_group_name   = azurerm_resource_group.main.name
+  private_dns_zone_name = azurerm_private_dns_zone.postgres.name
+  virtual_network_id    = azurerm_virtual_network.main.id
+}
+
+
 

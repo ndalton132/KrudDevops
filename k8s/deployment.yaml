@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: crudkub-server
-        image: asdasdacr.azurecr.io/crudkub-server:latest  
+        image: ${ACR_NAME}/crudkub-server:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 3000

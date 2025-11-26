@@ -21,6 +21,33 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false }  // Don't forget SSL!
 });
 
+
+const initDB = async () => {
+  const createTableQuery = `
+    CREATE TABLE IF NOT EXISTS todos (
+      id SERIAL PRIMARY KEY,
+      title VARCHAR(255) NOT NULL,
+      completed BOOLEAN DEFAULT false,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+  `;
+  
+  try {
+    await pool.query(createTableQuery);
+    console.log('✓ Database table initialized');
+  } catch (err) {
+    console.error('Error initializing database:', err);
+  }
+};
+
+initDB();
+
+// // Then start your server
+// app.listen(PORT, () => {
+//   console.log(`Server running on port ${PORT}`);
+// });
+
 // Test database connection
 pool.query('SELECT NOW()', (err, res) => {
   if (err) {

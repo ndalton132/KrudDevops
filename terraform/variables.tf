@@ -7,7 +7,7 @@ variable "resource_group_name" {
 variable "location" {
   description = "Azure region"
   type        = string
-  default     = ""
+  default = ""
 }
 
 variable "aks_cluster_name" {
